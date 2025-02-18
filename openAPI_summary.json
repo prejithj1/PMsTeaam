@@ -1,0 +1,55 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "ECG Summary API",
+      "description": "API for extracting and summarizing ECG data from PDF reports",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://127.0.0.1:8000",
+        "description": "Local server"
+      }
+    ],
+    "paths": {
+      "/get_last_3_ecg_reports": {
+        "get": {
+          "summary": "Extract text from ECG report",
+          "operationId": "get_last_3_ecg_reports_get_last_3_ecg_reports_get",
+          "parameters": [
+            {
+              "name": "patient_id",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "title": "Patient Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "c
+  
